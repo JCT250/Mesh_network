@@ -88,7 +88,7 @@ void loop() {
     network.read(header,message,sizeof(message));
     Serial.print("Received: \"");
     Serial.print(message);
-    Serial.print("\" from node 0");
+    Serial.print("\" from Node 0");
     Serial.println(header.from_node, OCT);
     digitalWrite(green, LOW);
   }

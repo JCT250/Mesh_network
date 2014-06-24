@@ -17,7 +17,11 @@ uint32_t measure_temp()
 
 uint32_t measure_voltage()
 {
-    // Take the voltage reading 
+
+//uint32_t reading = analogRead(volt);
+//reading = reading 
+
+  // Take the voltage reading 
     int i = num_measurements;
     uint32_t reading = 0;
     while(i--)

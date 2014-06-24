@@ -9,6 +9,9 @@
 #include <RF24.h>
 #include <RF24_config.h>
 
+#include "S_message.h"
+
+
 // Setup pin numbers
 int dd1 = 0;
 int dd2 = 0;
@@ -41,9 +44,9 @@ unsigned long now;
 const int num_measurements = 64;
 
 // What voltage is a reading of 1023?
-const unsigned voltage_reference = 5 * 256; // 5.0V
+const unsigned voltage_reference = 3.44 * 297.38; // 5.0V
 
-const unsigned long temp_calibration = 0;
+const int8_t temp_calibration = 0;
 
 // Setup radio on SPI and pins 8 and 7
 RF24 radio(8,7);
@@ -73,6 +76,8 @@ void startup()
 void setup() {
   // put your setup code here, to run once:
 
+  analogReference(INTERNAL);
+
   Serial.begin(57600);
 
   if(dd1d == 0) pinMode(dd1, OUTPUT);
@@ -93,17 +98,17 @@ void setup() {
   pinMode(btn, INPUT_PULLUP);
   pinMode(volt, INPUT);
   pinMode(temp, INPUT);
-  
+
   //Read node address from eeprom
   this_node = eeprom_read_word((uint16_t*)10);
-  
+
   // Run the LED routine and if button is depressed at the end of the routine enter config mode
   startup(); 
-  
+
   SPI.begin();
   radio.begin();
   network.begin(/*channel*/ 90, /*node address*/ this_node);
-  
+
   Serial.print("Network up - Node address is: 0");
   Serial.println(this_node, OCT);
 
@@ -120,4 +125,6 @@ void loop() {
     ping_message();
     last_sent = now;
   }
+
 }
+

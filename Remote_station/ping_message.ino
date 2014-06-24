@@ -2,8 +2,14 @@
 void ping_message ()
 {
   digitalWrite(yellow, HIGH);
-  Serial.println("Pinging Base");
-  char* tx_message = "Ping";
+  S_message message;
+  message.temp_reading = measure_temp(); 
+  message.voltage_reading = measure_voltage();
+  message.node_add = this_node; 
+
+  Serial.print("Sending: ");
+  Serial.println(message.toString());
+  char* tx_message = message.toString();
   RF24NetworkHeader header(/*to node*/ 00);
   bool ok = network.write(header,tx_message,strlen(tx_message));
   if (ok)
@@ -19,4 +25,5 @@ void ping_message ()
   }
   digitalWrite(yellow, LOW);
 }
+
 
