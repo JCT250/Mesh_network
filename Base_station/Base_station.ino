@@ -1,12 +1,12 @@
+#include <nRF24L01.h>
+#include <RF24.h>
+#include <RF24_config.h>
+
 #include <SPI.h>
 
 #include <RF24Network.h>
 #include <RF24Network_config.h>
 #include <Sync.h>
-
-#include <nRF24L01.h>
-#include <RF24.h>
-#include <RF24_config.h>
 
 int dd1 = 0;
 int dd2 = 0;
@@ -81,6 +81,7 @@ void loop() {
   // Is there anything ready for us?
   while ( network.available() )
   {
+    digitalWrite(green, HIGH);
     // If so, grab it and print it out
     RF24NetworkHeader header;
     static char message[32];
@@ -89,6 +90,7 @@ void loop() {
     Serial.print(message);
     Serial.print("\" from node 0");
     Serial.println(header.from_node);
+    digitalWrite(green, LOW);
   }
 }
 
