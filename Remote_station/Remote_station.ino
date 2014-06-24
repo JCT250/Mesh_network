@@ -18,6 +18,8 @@ int red = 3;
 int yellow = 4;
 int green = 5;
 int btn = 6;
+int volt = A2;
+int temp = A3;
 
 // Setup pin directions. These are then used to define whether the pin is an input or an output pin. 0 = Output, 1 = Input, 3 = Input with pullup resistor
 
@@ -34,6 +36,14 @@ unsigned long last_sent;
 
 // Current time
 unsigned long now;
+
+//number of voltage and temp measurements to take
+const int num_measurements = 64;
+
+// What voltage is a reading of 1023?
+const unsigned voltage_reference = 5 * 256; // 5.0V
+
+const unsigned long temp_calibration = 0;
 
 // Setup radio on SPI and pins 8 and 7
 RF24 radio(8,7);
@@ -81,7 +91,9 @@ void setup() {
   pinMode(yellow, OUTPUT);
   pinMode(green, OUTPUT);
   pinMode(btn, INPUT_PULLUP);
-
+  pinMode(volt, INPUT);
+  pinMode(temp, INPUT);
+  
   //Read node address from eeprom
   this_node = eeprom_read_word((uint16_t*)10);
   
