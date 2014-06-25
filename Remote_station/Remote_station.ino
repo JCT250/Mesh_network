@@ -21,8 +21,8 @@ int red = 3;
 int yellow = 4;
 int green = 5;
 int btn = 6;
-int volt = A2;
-int temp = A3;
+int volt = A3;
+int temp = A2;
 
 // Setup pin directions. These are then used to define whether the pin is an input or an output pin. 0 = Output, 1 = Input, 3 = Input with pullup resistor
 
@@ -44,9 +44,10 @@ unsigned long now;
 const int num_measurements = 64;
 
 // What voltage is a reading of 1023?
-const unsigned voltage_reference = 3.44 * 297.38; // 5.0V
+const unsigned voltage_reference = 3.44 * 256; // 5.0V
 
-const int8_t temp_calibration = 0;
+// What is the temperature calibration value. Change the first number only. 
+const int16_t temp_calibration = 0x0*0x10;
 
 // Setup radio on SPI and pins 8 and 7
 RF24 radio(8,7);
