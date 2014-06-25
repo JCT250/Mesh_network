@@ -8,10 +8,9 @@
 #include <RF24Network_config.h>
 #include <Sync.h>
 
-int dd1 = 0;
-int dd2 = 0;
-int aa1 = 0;
-int aa2 = 0;
+int dd1 = 10;
+int aa1 = A0;
+int aa2 = A1;
 int red = 3; 
 int yellow = 4;
 int green = 5;
@@ -57,7 +56,6 @@ void setup() {
   Serial.begin(57600);
 
   pinMode(dd1, OUTPUT);
-  pinMode(dd2, OUTPUT);
   pinMode(aa1, OUTPUT);
   pinMode(aa2, OUTPUT);
   pinMode(red, OUTPUT);

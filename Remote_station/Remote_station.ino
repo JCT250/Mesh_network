@@ -13,10 +13,9 @@
 
 
 // Setup pin numbers
-int dd1 = 0;
-int dd2 = 0;
-int aa1 = 0;
-int aa2 = 0;
+int dd1 = 10;
+int aa1 = A0;
+int aa2 = A1;
 int red = 3; 
 int yellow = 4;
 int green = 5;
@@ -27,7 +26,6 @@ int temp = A2;
 // Setup pin directions. These are then used to define whether the pin is an input or an output pin. 0 = Output, 1 = Input, 3 = Input with pullup resistor
 
 int dd1d = 0;
-int dd2d = 0;
 int aa1d = 0;
 int aa2d = 0;
 
@@ -84,9 +82,6 @@ void setup() {
   if(dd1d == 0) pinMode(dd1, OUTPUT);
   if(dd1d == 1) pinMode(dd1, INPUT);
   if(dd1d == 2) pinMode(dd1, INPUT_PULLUP);
-  if(dd2d == 0) pinMode(dd2, OUTPUT);
-  if(dd2d == 1) pinMode(dd2, INPUT);
-  if(dd2d == 2) pinMode(dd2, INPUT_PULLUP);
   if(aa1d == 0) pinMode(aa1, OUTPUT);
   if(aa1d == 1) pinMode(aa1, INPUT);
   if(aa1d == 2) pinMode(aa1, INPUT_PULLUP);
