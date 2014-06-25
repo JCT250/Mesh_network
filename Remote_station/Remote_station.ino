@@ -29,11 +29,12 @@ int dd1d = 0;
 int aa1d = 0;
 int aa2d = 0;
 
-// How often to send ping message to base station
-const unsigned long interval = 2000; //ms
 
-// When did we last send ping message?
-unsigned long last_sent;
+// How often to flash
+const unsigned long interval = 10000; //ms
+
+// When did we last flash?
+unsigned long last_lit;
 
 // Current time
 unsigned long now;
@@ -114,13 +115,40 @@ void loop() {
   // put your main code here, to run repeatedly: 
   network.update();
 
-  // If it's time to ping then...
-  now = millis();
-  if (now - last_sent > interval)
+
+  while ( network.available() )
   {
-    ping_message();
-    last_sent = now;
+    digitalWrite(green, HIGH);
+    // If so, grab it and print it out
+    RF24NetworkHeader header;
+    static char message[32];
+    network.read(header,message,sizeof(message));
+    digitalWrite(green, LOW);
+    if(header.type = 'l') 
+    {
+      lifecall();
+    }
   }
 
+
+
+
+  // If it's time to flash then...
+  now = millis();
+  if (now - last_lit > interval)
+  {
+    digitalWrite(green, HIGH);
+  }
+  if(now - last_lit > interval + 50)
+  {
+    digitalWrite(green, LOW);
+    last_lit = now;
+  }
 }
+
+
+
+
+
+
 

@@ -21,7 +21,7 @@ char S_message::buffer[36];
 
 char* S_message::toString(void)
 {
-  snprintf(buffer,sizeof(buffer),"Node0%0o %2u.%02uC %2u.%02uV",
+  snprintf(buffer,sizeof(buffer),"Node 0%0o %2u.%02uC %2u.%02uV",
   node_add,
   temp_reading >> 8,
   ( temp_reading & 0xFF ) * 100 / 256,

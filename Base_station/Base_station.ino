@@ -25,6 +25,21 @@ RF24Network network(radio);
 // Our node address 
 uint16_t this_node = 00;
 
+// How often to flash
+const unsigned long interval = 10000; //ms
+
+// When did we last flash?
+unsigned long last_lit;
+
+// Current time
+unsigned long now;
+
+// These are the addresses of the nodes that we expect to be on our network. Leading 0 defines numbers as being Octal
+uint16_t network_nodes[30] = {01, 02, 03, 04, 05, 011, 012, 013, 014, 015, 021, 022, 023, 024, 025};
+
+// This holds the state of the nodes after we scan to see if they are alive
+uint16_t node_alive[30] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
 void startup()
 {
   digitalWrite(red, HIGH);
@@ -70,6 +85,7 @@ void setup() {
   network.begin(/*channel*/ 90, /*node address*/ this_node);
 
   Serial.println("Network up - Base Station");
+  network_scan();
 }
 
 void loop() {
@@ -90,6 +106,19 @@ void loop() {
     Serial.println(header.from_node, OCT);
     digitalWrite(green, LOW);
   }
+  
+    // If it's time to flash then...
+  now = millis();
+  if (now - last_lit > interval)
+  {
+    digitalWrite(green, HIGH);
+  }
+  if(now - last_lit > interval + 50)
+  {
+    digitalWrite(green, LOW);
+    last_lit = now;
+  }
+  
 }
 
 
