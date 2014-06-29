@@ -124,15 +124,54 @@ void loop() {
     static char message[32];
     network.read(header,message,sizeof(message));
     digitalWrite(green, LOW);
-    if(header.type = 'l') 
+    if(header.type == 'l') 
     {
       lifecall();
     }
+    else if(header.type != 1)
+    {
+      switch(header.type)
+      {
+      case 'a':
+        if(dd1d == 0) digitalWrite(dd1, HIGH);
+        break;
+
+      case 'b':
+        if(dd1d == 0) digitalWrite(dd1, LOW);
+        break;
+
+      case 'c':
+        digitalWrite(green, HIGH);
+        digitalWrite(red, HIGH);
+        break;
+
+      case 'd':
+        digitalWrite(green, LOW);
+        digitalWrite(red, LOW);
+        break;
+
+      case 'e':
+        if(dd1d == 0) analogWrite(dd1, (atoi(message))); // may need to use strtoi here, not sure yet... will also need to add some non numerical character to function as an end character
+        break;
+
+      case 'f':
+        if(aa1d ==  0) digitalWrite(aa1, HIGH);
+        break;
+
+      case 'g':
+        if(aa1d == 0) digitalWrite(aa1, LOW);
+        break;
+
+      case 'h':
+        if(aa2d == 0) digitalWrite(aa2, HIGH);
+        break;
+
+      case 'j':
+        if(aa2d ==0) digitalWrite(aa2, LOW);
+        break;
+      }
+    }
   }
-
-
-
-
   // If it's time to flash then...
   now = millis();
   if (now - last_lit > interval)
@@ -145,6 +184,13 @@ void loop() {
     last_lit = now;
   }
 }
+
+
+
+
+
+
+
 
 
 
