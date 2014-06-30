@@ -66,91 +66,91 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00001v000td");
+            serialPort1.Write("d00001v000ta");
             serialPort1.Write(new byte[] {0x0D, 0x0A},0 ,2);
         } //done
 
         private void button2_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00002v000td");
+            serialPort1.Write("d00002v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button3_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00003v000td");
+            serialPort1.Write("d00003v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button4_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00004v000td");
+            serialPort1.Write("d00004v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button5_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00005v000td");
+            serialPort1.Write("d00005v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button6_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00011v000td");
+            serialPort1.Write("d00011v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button7_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00012v000td");
+            serialPort1.Write("d00012v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button8_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00013v000td");
+            serialPort1.Write("d00013v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button9_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00014v000td");
+            serialPort1.Write("d00014v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button10_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00015v000td");
+            serialPort1.Write("d00015v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button11_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00021v000td");
+            serialPort1.Write("d00021v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button12_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00022v000td");
+            serialPort1.Write("d00022v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button13_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00023v000td");
+            serialPort1.Write("d00023v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button14_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00024v000td");
+            serialPort1.Write("d00024v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done
 
         private void button15_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("d00025v000td");
+            serialPort1.Write("d00025v000ta");
             serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
         } //done  
     }
