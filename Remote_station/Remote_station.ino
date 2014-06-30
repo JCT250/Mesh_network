@@ -48,6 +48,9 @@ const unsigned voltage_reference = 3.44 * 256; // 5.0V
 // What is the temperature calibration value. Change the first number only. 
 const int16_t temp_calibration = 0x0*0x10;
 
+//message received from other node
+char rxmessage[32]; 
+
 // Setup radio on SPI and pins 8 and 7
 RF24 radio(8,7);
 
@@ -105,7 +108,6 @@ void setup() {
   SPI.begin();
   radio.begin();
   network.begin(/*channel*/ 90, /*node address*/ this_node);
-
   Serial.print("Network up - Node address is: 0");
   Serial.println(this_node, OCT);
 
@@ -121,8 +123,8 @@ void loop() {
     digitalWrite(green, HIGH);
     // If so, grab it and print it out
     RF24NetworkHeader header;
-    static char message[32];
-    network.read(header,message,sizeof(message));
+    for(int i=0; i<32; i++) rxmessage[i] = ' '; // this doesn't work....
+    network.read(header,rxmessage,sizeof(rxmessage));
     digitalWrite(green, LOW);
     if(header.type == 'l') 
     {
@@ -133,40 +135,53 @@ void loop() {
       switch(header.type)
       {
       case 'a':
-        if(dd1d == 0) digitalWrite(dd1, HIGH);
+        digitalWrite(red, HIGH);
+        digitalWrite(yellow, HIGH);
+        digitalWrite(green, HIGH);
+        delay(200);
+        digitalWrite(red, LOW);
+        digitalWrite(yellow, LOW);
+        digitalWrite(green, LOW);
+        delay(200);
+        digitalWrite(red, HIGH);
+        digitalWrite(yellow, HIGH);
+        digitalWrite(green, HIGH);
+        delay(200);
+        digitalWrite(red, LOW);
+        digitalWrite(yellow, LOW);
+        digitalWrite(green, LOW);
         break;
 
       case 'b':
-        if(dd1d == 0) digitalWrite(dd1, LOW);
+        if(dd1d == 0) digitalWrite(dd1, HIGH);
         break;
 
       case 'c':
-        digitalWrite(green, HIGH);
-        digitalWrite(red, HIGH);
+        if(dd1d == 0) digitalWrite(dd1, LOW);
         break;
 
       case 'd':
-        digitalWrite(green, LOW);
-        digitalWrite(red, LOW);
+      Serial.println(rxmessage); // something funny going on here... I suspect that is is some problem with the array in which the incoming messages are stored.
+                                  //for some reason the above line prints the correct information and then continues with data conatined in the message section 
+                                  // of messages that have previously been received or sent. The documentation indicated that pointers... are used to store the message
+                                  // so i'm not exactly sure where the data is being stored. I think that the program is starting to printout the information and then 
+                                  // continues until it finds a previously used null character.
+        //if(dd1d == 0) analogWrite(dd1, (atoi(message))); // may need to use strtoi here, not sure yet... will also need to add some non numerical character to function as an end character
         break;
 
       case 'e':
-        if(dd1d == 0) analogWrite(dd1, (atoi(message))); // may need to use strtoi here, not sure yet... will also need to add some non numerical character to function as an end character
-        break;
-
-      case 'f':
         if(aa1d ==  0) digitalWrite(aa1, HIGH);
         break;
 
-      case 'g':
+      case 'f':
         if(aa1d == 0) digitalWrite(aa1, LOW);
         break;
 
-      case 'h':
+      case 'g':
         if(aa2d == 0) digitalWrite(aa2, HIGH);
         break;
 
-      case 'j':
+      case 'h':
         if(aa2d ==0) digitalWrite(aa2, LOW);
         break;
       }
@@ -184,6 +199,8 @@ void loop() {
     last_lit = now;
   }
 }
+
+
 
 
 

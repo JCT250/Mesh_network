@@ -56,7 +56,9 @@ void network_scan()
       else if(node_alive[i] == 1) Serial.println(" alive");
     }
   }
+  Serial.println("Network Ready");
 }
+
 
 
 
