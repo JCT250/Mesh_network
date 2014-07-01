@@ -153,6 +153,14 @@
             this.btn_n21aa1h = new System.Windows.Forms.Button();
             this.btn_n21dd1l = new System.Windows.Forms.Button();
             this.btn_n21dd1h = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -168,11 +176,14 @@
             this.groupBox13.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox15.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(534, 433);
+            this.button16.Location = new System.Drawing.Point(530, 5);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(168, 22);
             this.button16.TabIndex = 15;
@@ -182,7 +193,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(708, 433);
+            this.button17.Location = new System.Drawing.Point(704, 6);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(168, 22);
             this.button17.TabIndex = 16;
@@ -193,9 +204,9 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 435);
+            this.comboBox1.Location = new System.Drawing.Point(6, 6);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(516, 21);
+            this.comboBox1.Size = new System.Drawing.Size(518, 21);
             this.comboBox1.TabIndex = 17;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -212,7 +223,7 @@
             this.groupBox1.Controls.Add(this.btn_n1aa1h);
             this.groupBox1.Controls.Add(this.btn_n1dd1l);
             this.groupBox1.Controls.Add(this.btn_n1dd1h);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(6, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(168, 135);
             this.groupBox1.TabIndex = 19;
@@ -298,7 +309,7 @@
             this.groupBox2.Controls.Add(this.btn_n2aa1h);
             this.groupBox2.Controls.Add(this.btn_n2dd1l);
             this.groupBox2.Controls.Add(this.btn_n2dd1h);
-            this.groupBox2.Location = new System.Drawing.Point(186, 12);
+            this.groupBox2.Location = new System.Drawing.Point(180, 10);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(168, 135);
             this.groupBox2.TabIndex = 20;
@@ -384,7 +395,7 @@
             this.groupBox3.Controls.Add(this.btn_n3aa1h);
             this.groupBox3.Controls.Add(this.btn_n3dd1l);
             this.groupBox3.Controls.Add(this.btn_n3dd1h);
-            this.groupBox3.Location = new System.Drawing.Point(360, 12);
+            this.groupBox3.Location = new System.Drawing.Point(354, 10);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(168, 135);
             this.groupBox3.TabIndex = 21;
@@ -470,7 +481,7 @@
             this.groupBox4.Controls.Add(this.btn_n4aa1h);
             this.groupBox4.Controls.Add(this.btn_n4dd1l);
             this.groupBox4.Controls.Add(this.btn_n4dd1h);
-            this.groupBox4.Location = new System.Drawing.Point(534, 12);
+            this.groupBox4.Location = new System.Drawing.Point(528, 10);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(168, 135);
             this.groupBox4.TabIndex = 25;
@@ -556,7 +567,7 @@
             this.groupBox5.Controls.Add(this.btn_n5aa1h);
             this.groupBox5.Controls.Add(this.btn_n5dd1l);
             this.groupBox5.Controls.Add(this.btn_n5dd1h);
-            this.groupBox5.Location = new System.Drawing.Point(708, 12);
+            this.groupBox5.Location = new System.Drawing.Point(702, 10);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(168, 135);
             this.groupBox5.TabIndex = 25;
@@ -642,7 +653,7 @@
             this.groupBox6.Controls.Add(this.btn_n11aa1h);
             this.groupBox6.Controls.Add(this.btn_n11dd1l);
             this.groupBox6.Controls.Add(this.btn_n11dd1h);
-            this.groupBox6.Location = new System.Drawing.Point(12, 153);
+            this.groupBox6.Location = new System.Drawing.Point(6, 151);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(168, 135);
             this.groupBox6.TabIndex = 26;
@@ -728,7 +739,7 @@
             this.groupBox7.Controls.Add(this.btn_n12aa1h);
             this.groupBox7.Controls.Add(this.btn_n12dd1l);
             this.groupBox7.Controls.Add(this.btn_n12dd1h);
-            this.groupBox7.Location = new System.Drawing.Point(186, 153);
+            this.groupBox7.Location = new System.Drawing.Point(180, 151);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(168, 135);
             this.groupBox7.TabIndex = 27;
@@ -814,7 +825,7 @@
             this.groupBox8.Controls.Add(this.btn_n13aa1h);
             this.groupBox8.Controls.Add(this.btn_n13dd1l);
             this.groupBox8.Controls.Add(this.btn_n13dd1h);
-            this.groupBox8.Location = new System.Drawing.Point(360, 153);
+            this.groupBox8.Location = new System.Drawing.Point(354, 151);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(168, 135);
             this.groupBox8.TabIndex = 27;
@@ -900,7 +911,7 @@
             this.groupBox9.Controls.Add(this.btn_n14aa1h);
             this.groupBox9.Controls.Add(this.btn_n14dd1l);
             this.groupBox9.Controls.Add(this.btn_n14dd1h);
-            this.groupBox9.Location = new System.Drawing.Point(534, 153);
+            this.groupBox9.Location = new System.Drawing.Point(528, 151);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(168, 135);
             this.groupBox9.TabIndex = 27;
@@ -986,7 +997,7 @@
             this.groupBox10.Controls.Add(this.btn_n15aa1h);
             this.groupBox10.Controls.Add(this.btn_n15dd1l);
             this.groupBox10.Controls.Add(this.btn_n15dd1h);
-            this.groupBox10.Location = new System.Drawing.Point(708, 153);
+            this.groupBox10.Location = new System.Drawing.Point(702, 151);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(168, 135);
             this.groupBox10.TabIndex = 28;
@@ -1072,7 +1083,7 @@
             this.groupBox11.Controls.Add(this.btn_n25aa1h);
             this.groupBox11.Controls.Add(this.btn_n25dd1l);
             this.groupBox11.Controls.Add(this.btn_n25dd1h);
-            this.groupBox11.Location = new System.Drawing.Point(708, 294);
+            this.groupBox11.Location = new System.Drawing.Point(702, 292);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(168, 135);
             this.groupBox11.TabIndex = 33;
@@ -1158,7 +1169,7 @@
             this.groupBox12.Controls.Add(this.btn_n24aa1h);
             this.groupBox12.Controls.Add(this.btn_n24dd1l);
             this.groupBox12.Controls.Add(this.btn_n24dd1h);
-            this.groupBox12.Location = new System.Drawing.Point(534, 294);
+            this.groupBox12.Location = new System.Drawing.Point(528, 292);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(168, 135);
             this.groupBox12.TabIndex = 30;
@@ -1244,7 +1255,7 @@
             this.groupBox13.Controls.Add(this.btn_n23aa1h);
             this.groupBox13.Controls.Add(this.btn_n23dd1l);
             this.groupBox13.Controls.Add(this.btn_n23dd1h);
-            this.groupBox13.Location = new System.Drawing.Point(360, 294);
+            this.groupBox13.Location = new System.Drawing.Point(354, 292);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(168, 135);
             this.groupBox13.TabIndex = 31;
@@ -1330,7 +1341,7 @@
             this.groupBox14.Controls.Add(this.btn_n22aa1h);
             this.groupBox14.Controls.Add(this.btn_n22dd1l);
             this.groupBox14.Controls.Add(this.btn_n22dd1h);
-            this.groupBox14.Location = new System.Drawing.Point(186, 294);
+            this.groupBox14.Location = new System.Drawing.Point(180, 292);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(168, 135);
             this.groupBox14.TabIndex = 32;
@@ -1416,7 +1427,7 @@
             this.groupBox15.Controls.Add(this.btn_n21aa1h);
             this.groupBox15.Controls.Add(this.btn_n21dd1l);
             this.groupBox15.Controls.Add(this.btn_n21dd1h);
-            this.groupBox15.Location = new System.Drawing.Point(12, 294);
+            this.groupBox15.Location = new System.Drawing.Point(6, 292);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(168, 135);
             this.groupBox15.TabIndex = 29;
@@ -1493,31 +1504,114 @@
             this.btn_n21dd1h.UseVisualStyleBackColor = true;
             this.btn_n21dd1h.Click += new System.EventHandler(this.btn_n21dd1h_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.ItemSize = new System.Drawing.Size(116, 36);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(886, 480);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.TabIndex = 34;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.groupBox11);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox12);
+            this.tabPage1.Controls.Add(this.groupBox10);
+            this.tabPage1.Controls.Add(this.groupBox13);
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.groupBox14);
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Controls.Add(this.groupBox15);
+            this.tabPage1.Controls.Add(this.groupBox9);
+            this.tabPage1.Controls.Add(this.groupBox5);
+            this.tabPage1.Controls.Add(this.groupBox6);
+            this.tabPage1.Controls.Add(this.groupBox8);
+            this.tabPage1.Controls.Add(this.groupBox7);
+            this.tabPage1.Location = new System.Drawing.Point(4, 40);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(878, 436);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Remote Pin Control";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.button17);
+            this.tabPage2.Controls.Add(this.button16);
+            this.tabPage2.Location = new System.Drawing.Point(4, 40);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(878, 436);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Serial Settings";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 46);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(430, 384);
+            this.textBox1.TabIndex = 18;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(445, 46);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox2.Size = new System.Drawing.Size(427, 384);
+            this.textBox2.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Data Sent";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(442, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Data Received";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 468);
-            this.Controls.Add(this.groupBox11);
-            this.Controls.Add(this.groupBox10);
-            this.Controls.Add(this.groupBox12);
-            this.Controls.Add(this.groupBox9);
-            this.Controls.Add(this.groupBox13);
-            this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.groupBox14);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox15);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button17);
-            this.Controls.Add(this.button16);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(998, 560);
+            this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Mesh Controller";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -1533,6 +1627,10 @@
             this.groupBox13.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1663,6 +1761,14 @@
         private System.Windows.Forms.Button btn_n21aa1h;
         private System.Windows.Forms.Button btn_n21dd1l;
         private System.Windows.Forms.Button btn_n21dd1h;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
