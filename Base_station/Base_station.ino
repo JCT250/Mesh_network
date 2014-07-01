@@ -155,9 +155,9 @@ void loop() {
 
           for(int m=0; m<6; m++) buffer[m] = ' '; //reset buffer
           for(int m=0; m<3; m++) buffer[m] = serial_rxd[m+7]; //copy section of serial_rxd into temp buffer
-          buffer[3] = '\0'; //null terminate
+          buffer[3] = '\n'; //null terminate
           txmessage_value = atoi(buffer); // convert value to int
-
+          buffer[3] = 'z'; //terminate with non numerical character so that we can send
           txmessage_type = serial_rxd[11]; // set the message type based on the rx string
           
           // uncomment for debug

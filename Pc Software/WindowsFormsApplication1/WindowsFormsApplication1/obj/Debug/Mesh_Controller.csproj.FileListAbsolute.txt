@@ -15,3 +15,4 @@ C:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication
 C:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Mesh_Controller.Properties.Resources.resources
 C:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Mesh_Controller.csproj.GenerateResource.Cache
+C:\Users\prepress2\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Mesh_Controller.csprojResolveAssemblyReference.cache

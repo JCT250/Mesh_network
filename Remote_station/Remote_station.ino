@@ -29,7 +29,6 @@ int dd1d = 0;
 int aa1d = 0;
 int aa2d = 0;
 
-
 // How often to flash
 const unsigned long interval = 10000; //ms
 
@@ -48,8 +47,9 @@ const unsigned voltage_reference = 3.44 * 256; // 5.0V
 // What is the temperature calibration value. Change the first number only. 
 const int16_t temp_calibration = 0x0*0x10;
 
-//message received from other node
-char rxmessage[32]; 
+//Value received from other node
+uint8_t rxmessage_value = 0;
+
 
 // Setup radio on SPI and pins 8 and 7
 RF24 radio(8,7);
@@ -123,7 +123,8 @@ void loop() {
     digitalWrite(green, HIGH);
     // If so, grab it and print it out
     RF24NetworkHeader header;
-    for(int i=0; i<32; i++) rxmessage[i] = ' '; // this doesn't work....
+    static char rxmessage[32]; 
+    //for(int i=0; i<32; i++) rxmessage[i] = ' '; // this doesn't work....
     network.read(header,rxmessage,sizeof(rxmessage));
     digitalWrite(green, LOW);
     if(header.type == 'l') 
@@ -135,6 +136,7 @@ void loop() {
       switch(header.type)
       {
       case 'a':
+      Serial.println("RX a");
         digitalWrite(red, HIGH);
         digitalWrite(yellow, HIGH);
         digitalWrite(green, HIGH);
@@ -153,35 +155,39 @@ void loop() {
         break;
 
       case 'b':
+      Serial.println("RX b");
         if(dd1d == 0) digitalWrite(dd1, HIGH);
         break;
 
       case 'c':
+      Serial.println("RX c");
         if(dd1d == 0) digitalWrite(dd1, LOW);
         break;
 
       case 'd':
-      Serial.println(rxmessage); // something funny going on here... I suspect that is is some problem with the array in which the incoming messages are stored.
-                                  //for some reason the above line prints the correct information and then continues with data conatined in the message section 
-                                  // of messages that have previously been received or sent. The documentation indicated that pointers... are used to store the message
-                                  // so i'm not exactly sure where the data is being stored. I think that the program is starting to printout the information and then 
-                                  // continues until it finds a previously used null character.
-        //if(dd1d == 0) analogWrite(dd1, (atoi(message))); // may need to use strtoi here, not sure yet... will also need to add some non numerical character to function as an end character
+      rxmessage_value = atoi(rxmessage);
+      Serial.println("RX d");
+      Serial.println(rxmessage_value); // c
+        if(dd1d == 0) analogWrite(dd1, (rxmessage_value));
         break;
 
       case 'e':
+      Serial.println("RX e");
         if(aa1d ==  0) digitalWrite(aa1, HIGH);
         break;
 
       case 'f':
+      Serial.println("RX f");
         if(aa1d == 0) digitalWrite(aa1, LOW);
         break;
 
       case 'g':
+      Serial.println("RX g");
         if(aa2d == 0) digitalWrite(aa2, HIGH);
         break;
 
       case 'h':
+      Serial.println("RX h");
         if(aa2d ==0) digitalWrite(aa2, LOW);
         break;
       }
