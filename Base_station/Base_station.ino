@@ -172,6 +172,7 @@ void loop() {
           RF24NetworkHeader header(/*to node*/ txmessage_destination, txmessage_type);
           bool ok = network.write(header,txmessage_content,strlen(txmessage_content));
           if(ok) Serial.println("OK");
+          if(serial_rxd [11] == 'l')network_scan();
         } 
       }
     }

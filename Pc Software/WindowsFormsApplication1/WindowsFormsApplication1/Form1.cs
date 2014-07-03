@@ -13,9 +13,73 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+
+        private String rx_data; // incoming data
+        private String str1; // substring of rx_data
+        private String str2; // substring of rx_data
+        private String str3; // substring of rx_data
+        private int status_address;
+        private int start1;
+        private int start2;
+        private int start3;
+        private int end1;
+        private int end2;
+        private int end3;
+
+        private bool node01_alive = false;
+        private bool node02_alive = false;
+        private bool node03_alive = false;
+        private bool node04_alive = false;
+        private bool node05_alive = false;
+
+        private bool node011_alive = false;
+        private bool node012_alive = false;
+        private bool node013_alive = false;
+        private bool node014_alive = false;
+        private bool node015_alive = false;
+
+        private bool node021_alive = false;
+        private bool node022_alive = false;
+        private bool node023_alive = false;
+        private bool node024_alive = false;
+        private bool node025_alive = false;
+
+
         public Form1()
         {
             InitializeComponent();
+            textBox3.Text = ("0.00v");
+            textBox4.Text = ("0.00°c");
+            textBox5.Text = ("0.00v");
+            textBox6.Text = ("0.00°c");
+            textBox7.Text = ("0.00v");
+            textBox8.Text = ("0.00°c");
+            textBox9.Text = ("0.00v");
+            textBox10.Text = ("0.00°c");
+            textBox11.Text = ("0.00v");
+            textBox12.Text = ("0.00°c");
+
+            textBox15.Text = ("0.00v");
+            textBox16.Text = ("0.00°c");
+            textBox17.Text = ("0.00v");
+            textBox18.Text = ("0.00°c");
+            textBox19.Text = ("0.00v");
+            textBox20.Text = ("0.00°c");
+            textBox21.Text = ("0.00v");
+            textBox22.Text = ("0.00°c");
+            textBox23.Text = ("0.00v");
+            textBox24.Text = ("0.00°c");
+
+            textBox27.Text = ("0.00v");
+            textBox28.Text = ("0.00°c");
+            textBox29.Text = ("0.00v");
+            textBox30.Text = ("0.00°c");
+            textBox31.Text = ("0.00v");
+            textBox32.Text = ("0.00°c");
+            textBox33.Text = ("0.00v");
+            textBox34.Text = ("0.00°c");
+            textBox35.Text = ("0.00v");
+            textBox36.Text = ("0.00°c");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -23,6 +87,7 @@ namespace WindowsFormsApplication1
             var ports = SerialPort.GetPortNames();
             comboBox1.DataSource = ports;
             this.KeyPreview = true;
+
         } //done    
 
         private void button16_Click(object sender, EventArgs e)
@@ -36,11 +101,12 @@ namespace WindowsFormsApplication1
             if (comboBox1.SelectedIndex > -1)
             {
                 Connect(comboBox1.SelectedItem.ToString());
+                
             }
             else
             {
                 MessageBox.Show("Please select a port first");
-            }    
+            }
         } //done
 
         private void serial_check()
@@ -56,6 +122,8 @@ namespace WindowsFormsApplication1
                 serialPort1.BaudRate = 57600;
                 serialPort1.Open();
                 Form1.ActiveForm.Text = (String.Format("Connected to '{0}'", comboBox1.SelectedItem));
+                timer2.Enabled = true;
+                btn_scan_Click(null, null);
             }
         }// done
 
@@ -67,12 +135,124 @@ namespace WindowsFormsApplication1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
+
             if (serialPort1.IsOpen == true)
             {
                 if (serialPort1.BytesToRead > 0)
                 {
                     textBox2.AppendText(DateTime.Now.ToString("HH:mm:ss ") + Environment.NewLine);
-                    textBox2.AppendText(serialPort1.ReadExisting() + Environment.NewLine);
+                    rx_data = (serialPort1.ReadLine() + Environment.NewLine);
+                    textBox2.AppendText(rx_data + Environment.NewLine);
+                    if (rx_data.Contains("Node"))
+                    {
+                        //MessageBox.Show("Found Node");
+                        start1 = rx_data.IndexOf("Node") + 5; // locate the start of the address
+                        end1 = rx_data.IndexOf(" ");
+                        str1 = rx_data.Substring(start1,3); // save the address into str1
+                        status_address = Convert.ToInt32(str1);
+
+                        start2 = rx_data.IndexOf(" ", start1+1); // locate the second space in the string
+                        end2 = rx_data.IndexOf("C"); // locate the end of the temp reading
+                        str2 = rx_data.Substring(start2 + 1, end2 - start2 - 1); // save the temp reading into str2
+
+                        start3 = rx_data.IndexOf(" ", start2+1); // locate the third space in the string
+                        end3 = rx_data.IndexOf("V"); // locate the end of the voltage reading
+                        str3 = rx_data.Substring(start3 + 1, end3 - start3 - 1); // save the voltage reading into str3
+                        switch (status_address)
+                        {
+                            case 01:
+                                node01_alive = true;
+                                textBox3.Text = (str3 + "v");
+                                textBox4.Text = (str2 + "°c");
+                                break;
+
+                            case 02:
+                                node02_alive = true;
+                                textBox5.Text = (str3 + "v");
+                                textBox6.Text = (str2 + "°c");
+                                break;
+
+                            case 03:
+                                node03_alive = true;
+                                textBox7.Text = (str3 + "v");
+                                textBox8.Text = (str2 + "°c");
+                                break;
+
+                            case 04:
+                                node04_alive = true;
+                                textBox9.Text = (str3 + "v");
+                                textBox10.Text = (str2 + "°c");
+                                break;
+
+                            case 05:
+                                node05_alive = true;
+                                textBox11.Text = (str3 + "v");
+                                textBox12.Text = (str2 + "°c");
+                                break;
+
+                            case 011:
+                                node011_alive = true;
+                                textBox15.Text = (str3 + "v");
+                                textBox16.Text = (str2 + "°c");
+                                break;
+
+                            case 012:
+                                node012_alive = true;
+                                textBox17.Text = (str3 + "v");
+                                textBox18.Text = (str2 + "°c");
+                                break;
+
+                            case 013:
+                                node013_alive = true;
+                                textBox19.Text = (str3 + "v");
+                                textBox20.Text = (str2 + "°c");
+                                break;
+
+                            case 014:
+                                node014_alive = true;
+                                textBox21.Text = (str3 + "v");
+                                textBox22.Text = (str2 + "°c");
+                                break;
+
+                            case 015:
+                                node015_alive = true;
+                                textBox23.Text = (str3 + "v");
+                                textBox24.Text = (str2 + "°c");
+                                break;
+
+                            case 021:
+                                node021_alive = true;
+                                textBox27.Text = (str3 + "v");
+                                textBox28.Text = (str2 + "°c");
+                                break;
+
+                            case 022:
+                                node022_alive = true;
+                                textBox29.Text = (str3 + "v");
+                                textBox30.Text = (str2 + "°c");
+                                break;
+
+                            case 023:
+                                node023_alive = true;
+                                textBox31.Text = (str3 + "v");
+                                textBox32.Text = (str2 + "°c");
+                                break;
+
+                            case 024:
+                                node024_alive = true;
+                                textBox33.Text = (str3 + "v");
+                                textBox34.Text = (str2 + "°c");
+                                break;
+
+                            case 025:
+                                node025_alive = true;
+                                textBox35.Text = (str3 + "v");
+                                textBox36.Text = (str2 + "°c");
+                                break;
+                        }
+                        //MessageBox.Show("add" + str1 + "temp" + str2 + "volt" + str3);
+                    }
                 }
             }
             timer1.Enabled = true;
@@ -1588,6 +1768,69 @@ namespace WindowsFormsApplication1
 
         }
 
-        
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_scan_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = ("0.00v");
+            textBox4.Text = ("0.00°c");
+            textBox5.Text = ("0.00v");
+            textBox6.Text = ("0.00°c");
+            textBox7.Text = ("0.00v");
+            textBox8.Text = ("0.00°c");
+            textBox9.Text = ("0.00v");
+            textBox10.Text = ("0.00°c");
+            textBox11.Text = ("0.00v");
+            textBox12.Text = ("0.00°c");
+
+            textBox15.Text = ("0.00v");
+            textBox16.Text = ("0.00°c");
+            textBox17.Text = ("0.00v");
+            textBox18.Text = ("0.00°c");
+            textBox19.Text = ("0.00v");
+            textBox20.Text = ("0.00°c");
+            textBox21.Text = ("0.00v");
+            textBox22.Text = ("0.00°c");
+            textBox23.Text = ("0.00v");
+            textBox24.Text = ("0.00°c");
+
+            textBox27.Text = ("0.00v");
+            textBox28.Text = ("0.00°c");
+            textBox29.Text = ("0.00v");
+            textBox30.Text = ("0.00°c");
+            textBox31.Text = ("0.00v");
+            textBox32.Text = ("0.00°c");
+            textBox33.Text = ("0.00v");
+            textBox34.Text = ("0.00°c");
+            textBox35.Text = ("0.00v");
+            textBox36.Text = ("0.00°c");
+
+            if (!serialPort1.IsOpen)
+            {
+                serial_check();
+            }
+            else
+            {
+                serialPort1.Write("d00000v000tl");
+                serialPort1.Write(new byte[] { 0x0D, 0x0A }, 0, 2);
+                textBox1.AppendText("Checking Network Status - d00000v000tl" + Environment.NewLine);
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            btn_scan_Click(null, null);
+            timer2.Enabled = true;
+        }
+
+
     }
 }

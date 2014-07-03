@@ -46,7 +46,7 @@ void network_scan()
   digitalWrite(yellow, LOW);
   digitalWrite(green, LOW);
   digitalWrite(red, LOW);
-  for(int i=0; i<29; i++)
+/*  for(int i=0; i<29; i++)
   {
     if(network_nodes[i] >0)
     {
@@ -56,6 +56,7 @@ void network_scan()
       else if(node_alive[i] == 1) Serial.println(" alive");
     }
   }
+  */
   Serial.println("Network Ready");
 }
 
