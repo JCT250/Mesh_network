@@ -13,7 +13,6 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-
         private String rx_data; // incoming data
         private String str1; // substring of rx_data
         private String str2; // substring of rx_data
@@ -80,6 +79,7 @@ namespace WindowsFormsApplication1
             textBox34.Text = ("0.00°c");
             textBox35.Text = ("0.00v");
             textBox36.Text = ("0.00°c");
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -101,7 +101,7 @@ namespace WindowsFormsApplication1
             if (comboBox1.SelectedIndex > -1)
             {
                 Connect(comboBox1.SelectedItem.ToString());
-                
+
             }
             else
             {
@@ -132,7 +132,6 @@ namespace WindowsFormsApplication1
 
         }// done
 
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Enabled = false;
@@ -144,19 +143,20 @@ namespace WindowsFormsApplication1
                     textBox2.AppendText(DateTime.Now.ToString("HH:mm:ss ") + Environment.NewLine);
                     rx_data = (serialPort1.ReadLine() + Environment.NewLine);
                     textBox2.AppendText(rx_data + Environment.NewLine);
+
                     if (rx_data.Contains("Node"))
                     {
                         //MessageBox.Show("Found Node");
                         start1 = rx_data.IndexOf("Node") + 5; // locate the start of the address
                         end1 = rx_data.IndexOf(" ");
-                        str1 = rx_data.Substring(start1,3); // save the address into str1
+                        str1 = rx_data.Substring(start1, 3); // save the address into str1
                         status_address = Convert.ToInt32(str1);
 
-                        start2 = rx_data.IndexOf(" ", start1+1); // locate the second space in the string
+                        start2 = rx_data.IndexOf(" ", start1 + 1); // locate the second space in the string
                         end2 = rx_data.IndexOf("C"); // locate the end of the temp reading
                         str2 = rx_data.Substring(start2 + 1, end2 - start2 - 1); // save the temp reading into str2
 
-                        start3 = rx_data.IndexOf(" ", start2+1); // locate the third space in the string
+                        start3 = rx_data.IndexOf(" ", start2 + 1); // locate the third space in the string
                         end3 = rx_data.IndexOf("V"); // locate the end of the voltage reading
                         str3 = rx_data.Substring(start3 + 1, end3 - start3 - 1); // save the voltage reading into str3
                         switch (status_address)
@@ -251,7 +251,170 @@ namespace WindowsFormsApplication1
                                 textBox36.Text = (str2 + "°c");
                                 break;
                         }
-                        //MessageBox.Show("add" + str1 + "temp" + str2 + "volt" + str3);
+                        if (node01_alive == true)
+                        {
+                            btn_n1dd1h.Enabled = true;
+                            btn_n1dd1l.Enabled = true;
+                            btn_n1aa1h.Enabled = true;
+                            btn_n1aa1l.Enabled = true;
+                            btn_n1aa2h.Enabled = true;
+                            btn_n1aa2l.Enabled = true;
+                            btn_n1ident.Enabled = true;
+                        }
+
+                        if (node02_alive == true)
+                        {
+                            btn_n2dd1h.Enabled = true;
+                            btn_n2dd1l.Enabled = true;
+                            btn_n2aa1h.Enabled = true;
+                            btn_n2aa1l.Enabled = true;
+                            btn_n2aa2h.Enabled = true;
+                            btn_n2aa2l.Enabled = true;
+                            btn_n2ident.Enabled = true;
+                        }
+
+                        if (node03_alive == true)
+                        {
+                            btn_n3dd1h.Enabled = true;
+                            btn_n3dd1l.Enabled = true;
+                            btn_n3aa1h.Enabled = true;
+                            btn_n3aa1l.Enabled = true;
+                            btn_n3aa2h.Enabled = true;
+                            btn_n3aa2l.Enabled = true;
+                            btn_n3ident.Enabled = true;
+                        }
+
+                        if (node04_alive == true)
+                        {
+                            btn_n4dd1h.Enabled = true;
+                            btn_n4dd1l.Enabled = true;
+                            btn_n4aa1h.Enabled = true;
+                            btn_n4aa1l.Enabled = true;
+                            btn_n4aa2h.Enabled = true;
+                            btn_n4aa2l.Enabled = true;
+                            btn_n4ident.Enabled = true;
+                        }
+
+                        if (node05_alive == true)
+                        {
+                            btn_n5dd1h.Enabled = true;
+                            btn_n5dd1l.Enabled = true;
+                            btn_n5aa1h.Enabled = true;
+                            btn_n5aa1l.Enabled = true;
+                            btn_n5aa2h.Enabled = true;
+                            btn_n5aa2l.Enabled = true;
+                            btn_n5ident.Enabled = true;
+                        }
+
+                        if (node011_alive == true)
+                        {
+                            btn_n11dd1h.Enabled = true;
+                            btn_n11dd1l.Enabled = true;
+                            btn_n11aa1h.Enabled = true;
+                            btn_n11aa1l.Enabled = true;
+                            btn_n11aa2h.Enabled = true;
+                            btn_n11aa2l.Enabled = true;
+                            btn_n11ident.Enabled = true;
+                        }
+
+                        if (node012_alive == true)
+                        {
+                            btn_n12dd1h.Enabled = true;
+                            btn_n12dd1l.Enabled = true;
+                            btn_n12aa1h.Enabled = true;
+                            btn_n12aa1l.Enabled = true;
+                            btn_n12aa2h.Enabled = true;
+                            btn_n12aa2l.Enabled = true;
+                            btn_n12ident.Enabled = true;
+                        }
+
+                        if (node013_alive == true)
+                        {
+                            btn_n13dd1h.Enabled = true;
+                            btn_n13dd1l.Enabled = true;
+                            btn_n13aa1h.Enabled = true;
+                            btn_n13aa1l.Enabled = true;
+                            btn_n13aa2h.Enabled = true;
+                            btn_n13aa2l.Enabled = true;
+                            btn_n13ident.Enabled = true;
+                        }
+
+                        if (node014_alive == true)
+                        {
+                            btn_n14dd1h.Enabled = true;
+                            btn_n14dd1l.Enabled = true;
+                            btn_n14aa1h.Enabled = true;
+                            btn_n14aa1l.Enabled = true;
+                            btn_n14aa2h.Enabled = true;
+                            btn_n14aa2l.Enabled = true;
+                            btn_n14ident.Enabled = true;
+                        }
+
+                        if (node015_alive == true)
+                        {
+                            btn_n15dd1h.Enabled = true;
+                            btn_n15dd1l.Enabled = true;
+                            btn_n15aa1h.Enabled = true;
+                            btn_n15aa1l.Enabled = true;
+                            btn_n15aa2h.Enabled = true;
+                            btn_n15aa2l.Enabled = true;
+                            btn_n15ident.Enabled = true;
+                        }
+
+                        if (node021_alive == true)
+                        {
+                            btn_n21dd1h.Enabled = true;
+                            btn_n21dd1l.Enabled = true;
+                            btn_n21aa1h.Enabled = true;
+                            btn_n21aa1l.Enabled = true;
+                            btn_n21aa2h.Enabled = true;
+                            btn_n21aa2l.Enabled = true;
+                            btn_n21ident.Enabled = true;
+                        }
+
+                        if (node022_alive == true)
+                        {
+                            btn_n22dd1h.Enabled = true;
+                            btn_n22dd1l.Enabled = true;
+                            btn_n22aa1h.Enabled = true;
+                            btn_n22aa1l.Enabled = true;
+                            btn_n22aa2h.Enabled = true;
+                            btn_n22aa2l.Enabled = true;
+                            btn_n22ident.Enabled = true;
+                        }
+
+                        if (node023_alive == true)
+                        {
+                            btn_n23dd1h.Enabled = true;
+                            btn_n23dd1l.Enabled = true;
+                            btn_n23aa1h.Enabled = true;
+                            btn_n23aa1l.Enabled = true;
+                            btn_n23aa2h.Enabled = true;
+                            btn_n23aa2l.Enabled = true;
+                            btn_n23ident.Enabled = true;
+                        }
+
+                        if (node024_alive == true)
+                        {
+                            btn_n24dd1h.Enabled = true;
+                            btn_n24dd1l.Enabled = true;
+                            btn_n24aa1h.Enabled = true;
+                            btn_n24aa1l.Enabled = true;
+                            btn_n24aa2h.Enabled = true;
+                            btn_n24aa2l.Enabled = true;
+                            btn_n24ident.Enabled = true;
+                        }
+
+                        if (node025_alive == true)
+                        {
+                            btn_n25dd1h.Enabled = true;
+                            btn_n25dd1l.Enabled = true;
+                            btn_n25aa1h.Enabled = true;
+                            btn_n25aa1l.Enabled = true;
+                            btn_n25aa2h.Enabled = true;
+                            btn_n25aa2l.Enabled = true;
+                            btn_n25ident.Enabled = true;
+                        }
                     }
                 }
             }
@@ -1813,6 +1976,142 @@ namespace WindowsFormsApplication1
             textBox35.Text = ("0.00v");
             textBox36.Text = ("0.00°c");
 
+            node01_alive = false;
+            node02_alive = false;
+            node03_alive = false;
+            node04_alive = false;
+            node05_alive = false;
+            node011_alive = false;
+            node012_alive = false;
+            node013_alive = false;
+            node014_alive = false;
+            node015_alive = false;
+            node021_alive = false;
+            node022_alive = false;
+            node023_alive = false;
+            node024_alive = false;
+            node025_alive = false;
+
+            btn_n1dd1h.Enabled = false;
+            btn_n1dd1l.Enabled = false;
+            btn_n1aa1h.Enabled = false;
+            btn_n1aa1l.Enabled = false;
+            btn_n1aa2h.Enabled = false;
+            btn_n1aa2l.Enabled = false;
+            btn_n1ident.Enabled = false;
+
+            btn_n2dd1h.Enabled = false;
+            btn_n2dd1l.Enabled = false;
+            btn_n2aa1h.Enabled = false;
+            btn_n2aa1l.Enabled = false;
+            btn_n2aa2h.Enabled = false;
+            btn_n2aa2l.Enabled = false;
+            btn_n2ident.Enabled = false;
+
+            btn_n3dd1h.Enabled = false;
+            btn_n3dd1l.Enabled = false;
+            btn_n3aa1h.Enabled = false;
+            btn_n3aa1l.Enabled = false;
+            btn_n3aa2h.Enabled = false;
+            btn_n3aa2l.Enabled = false;
+            btn_n3ident.Enabled = false;
+
+            btn_n4dd1h.Enabled = false;
+            btn_n4dd1l.Enabled = false;
+            btn_n4aa1h.Enabled = false;
+            btn_n4aa1l.Enabled = false;
+            btn_n4aa2h.Enabled = false;
+            btn_n4aa2l.Enabled = false;
+            btn_n4ident.Enabled = false;
+
+            btn_n5dd1h.Enabled = false;
+            btn_n5dd1l.Enabled = false;
+            btn_n5aa1h.Enabled = false;
+            btn_n5aa1l.Enabled = false;
+            btn_n5aa2h.Enabled = false;
+            btn_n5aa2l.Enabled = false;
+            btn_n5ident.Enabled = false;
+
+            btn_n11dd1h.Enabled = false;
+            btn_n11dd1l.Enabled = false;
+            btn_n11aa1h.Enabled = false;
+            btn_n11aa1l.Enabled = false;
+            btn_n11aa2h.Enabled = false;
+            btn_n11aa2l.Enabled = false;
+            btn_n11ident.Enabled = false;
+
+            btn_n12dd1h.Enabled = false;
+            btn_n12dd1l.Enabled = false;
+            btn_n12aa1h.Enabled = false;
+            btn_n12aa1l.Enabled = false;
+            btn_n12aa2h.Enabled = false;
+            btn_n12aa2l.Enabled = false;
+            btn_n12ident.Enabled = false;
+
+            btn_n13dd1h.Enabled = false;
+            btn_n13dd1l.Enabled = false;
+            btn_n13aa1h.Enabled = false;
+            btn_n13aa1l.Enabled = false;
+            btn_n13aa2h.Enabled = false;
+            btn_n13aa2l.Enabled = false;
+            btn_n13ident.Enabled = false;
+
+            btn_n14dd1h.Enabled = false;
+            btn_n14dd1l.Enabled = false;
+            btn_n14aa1h.Enabled = false;
+            btn_n14aa1l.Enabled = false;
+            btn_n14aa2h.Enabled = false;
+            btn_n14aa2l.Enabled = false;
+            btn_n14ident.Enabled = false;
+
+            btn_n15dd1h.Enabled = false;
+            btn_n15dd1l.Enabled = false;
+            btn_n15aa1h.Enabled = false;
+            btn_n15aa1l.Enabled = false;
+            btn_n15aa2h.Enabled = false;
+            btn_n15aa2l.Enabled = false;
+            btn_n15ident.Enabled = false;
+
+            btn_n21dd1h.Enabled = false;
+            btn_n21dd1l.Enabled = false;
+            btn_n21aa1h.Enabled = false;
+            btn_n21aa1l.Enabled = false;
+            btn_n21aa2h.Enabled = false;
+            btn_n21aa2l.Enabled = false;
+            btn_n21ident.Enabled = false;
+
+            btn_n22dd1h.Enabled = false;
+            btn_n22dd1l.Enabled = false;
+            btn_n22aa1h.Enabled = false;
+            btn_n22aa1l.Enabled = false;
+            btn_n22aa2h.Enabled = false;
+            btn_n22aa2l.Enabled = false;
+            btn_n22ident.Enabled = false;
+
+            btn_n23dd1h.Enabled = false;
+            btn_n23dd1l.Enabled = false;
+            btn_n23aa1h.Enabled = false;
+            btn_n23aa1l.Enabled = false;
+            btn_n23aa2h.Enabled = false;
+            btn_n23aa2l.Enabled = false;
+            btn_n23ident.Enabled = false;
+
+            btn_n24dd1h.Enabled = false;
+            btn_n24dd1l.Enabled = false;
+            btn_n24aa1h.Enabled = false;
+            btn_n24aa1l.Enabled = false;
+            btn_n24aa2h.Enabled = false;
+            btn_n24aa2l.Enabled = false;
+            btn_n24ident.Enabled = false;
+
+            btn_n25dd1h.Enabled = false;
+            btn_n25dd1l.Enabled = false;
+            btn_n25aa1h.Enabled = false;
+            btn_n25aa1l.Enabled = false;
+            btn_n25aa2h.Enabled = false;
+            btn_n25aa2l.Enabled = false;
+            btn_n25ident.Enabled = false;
+
             if (!serialPort1.IsOpen)
             {
                 serial_check();
@@ -1824,6 +2123,7 @@ namespace WindowsFormsApplication1
                 textBox1.AppendText("Checking Network Status - d00000v000tl" + Environment.NewLine);
             }
         }
+
 
         private void timer2_Tick(object sender, EventArgs e)
         {
