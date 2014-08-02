@@ -63,6 +63,9 @@ uint16_t new_address;
 
 void startup()
 {
+   if(dd1d == 0) digitalWrite(dd1, LOW);
+  if(dd1d == 0) digitalWrite(aa1, LOW);
+  if(dd1d == 0) digitalWrite(aa2, LOW);
   digitalWrite(red, HIGH);
   delay(500);
   digitalWrite(yellow, HIGH);
@@ -160,7 +163,7 @@ void loop() {
         break;
 
       case 'b':
-        Serial.println("RX b");
+        Serial.println("RX b"); // volume up
         if(dd1d == 0) 
         {
           digitalWrite(dd1, HIGH);
@@ -183,7 +186,7 @@ void loop() {
         break;
 
       case 'e':
-        Serial.println("RX e");
+        Serial.println("RX e"); // volume down
         if(aa1d ==  0) 
         {
           digitalWrite(aa1, HIGH);
@@ -198,7 +201,7 @@ void loop() {
         break;
 
       case 'g':
-        Serial.println("RX g");
+        Serial.println("RX g"); // power on
         if(aa2d == 0) 
         {
           digitalWrite(aa2, HIGH);
@@ -208,10 +211,14 @@ void loop() {
         break;
 
       case 'h':
-        Serial.println("RX h");
-        if(aa2d ==0) digitalWrite(aa2, LOW);
+        Serial.println("RX h"); // power off
+        if(aa2d ==0)
+       {
+         digitalWrite(aa2, LOW);
+         delay(2000);
+         digitalWrite(aa2, LOW);
+       }
         break;
-      }
     }
   }
   // If it's time to flash then...
