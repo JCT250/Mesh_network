@@ -63,9 +63,6 @@ uint16_t new_address;
 
 void startup()
 {
-   if(dd1d == 0) digitalWrite(dd1, LOW);
-  if(dd1d == 0) digitalWrite(aa1, LOW);
-  if(dd1d == 0) digitalWrite(aa2, LOW);
   digitalWrite(red, HIGH);
   delay(500);
   digitalWrite(yellow, HIGH);
@@ -86,19 +83,13 @@ void setup() {
 
   Serial.begin(57600);
 
-  if(dd1d == 0) pinMode(dd1, OUTPUT);
-  if(dd1d == 1) pinMode(dd1, INPUT);
-  if(dd1d == 2) pinMode(dd1, INPUT_PULLUP);
-  if(aa1d == 0) pinMode(aa1, OUTPUT);
-  if(aa1d == 1) pinMode(aa1, INPUT);
-  if(aa1d == 2) pinMode(aa1, INPUT_PULLUP);
-  if(aa2d == 0) pinMode(aa2, OUTPUT);
-  if(aa2d == 1) pinMode(aa2, INPUT);
-  if(aa2d == 2) pinMode(aa2, INPUT_PULLUP);
+  pinMode(dd1, OUTPUT);
+  pinMode(aa1, OUTPUT);
+  pinMode(aa2, OUTPUT);
 
-  if(dd1d == 0) digitalWrite(dd1, LOW);
-  if(dd1d == 0) digitalWrite(aa1, LOW);
-  if(dd1d == 0) digitalWrite(aa2, LOW);
+  digitalWrite(dd1, LOW);
+  digitalWrite(aa1, LOW);
+  digitalWrite(aa2, LOW);
 
   pinMode(red, OUTPUT);
   pinMode(yellow, OUTPUT);
@@ -118,6 +109,9 @@ void setup() {
   network.begin(/*channel*/ 90, /*node address*/ this_node);
   Serial.print("Network up - Node address is: 0");
   Serial.println(this_node, OCT);
+    digitalWrite(dd1, LOW);
+  digitalWrite(aa1, LOW);
+  digitalWrite(aa2, LOW);
 
 }
 
@@ -164,61 +158,49 @@ void loop() {
 
       case 'b':
         Serial.println("RX b"); // volume up
-        if(dd1d == 0) 
-        {
-          digitalWrite(dd1, HIGH);
-          delay(50);
-          digitalWrite(dd1, LOW);
-        }
-
+        digitalWrite(dd1, HIGH);
+        delay(50);
+        digitalWrite(dd1, LOW);
         break;
 
       case 'c':
         Serial.println("RX c");
-        if(dd1d == 0) digitalWrite(dd1, LOW);
+        digitalWrite(dd1, LOW);
         break;
 
       case 'd':
         rxmessage_value = atoi(rxmessage);
         Serial.println("RX d");
         Serial.println(rxmessage_value); // c
-        if(dd1d == 0) analogWrite(dd1, (rxmessage_value));
+        analogWrite(dd1, (rxmessage_value));
         break;
 
       case 'e':
         Serial.println("RX e"); // volume down
-        if(aa1d ==  0) 
-        {
-          digitalWrite(aa1, HIGH);
-          delay(50);
-          digitalWrite(aa1, LOW);
-        }
+        digitalWrite(aa1, HIGH);
+        delay(50);
+        digitalWrite(aa1, LOW);
         break;
 
       case 'f':
         Serial.println("RX f");
-        if(aa1d == 0) digitalWrite(aa1, LOW);
+        digitalWrite(aa1, LOW);
         break;
 
       case 'g':
         Serial.println("RX g"); // power on
-        if(aa2d == 0) 
-        {
-          digitalWrite(aa2, HIGH);
-          delay(50);
-          digitalWrite(aa2, LOW);
-        }
+        digitalWrite(aa2, HIGH);
+        delay(50);
+        digitalWrite(aa2, LOW);
         break;
 
       case 'h':
         Serial.println("RX h"); // power off
-        if(aa2d ==0)
-       {
-         digitalWrite(aa2, LOW);
-         delay(2000);
-         digitalWrite(aa2, LOW);
-       }
+        digitalWrite(aa2, HIGH);
+        delay(2000);
+        digitalWrite(aa2, LOW);
         break;
+      }
     }
   }
   // If it's time to flash then...
@@ -232,7 +214,12 @@ void loop() {
     digitalWrite(green, LOW);
     last_lit = now;
   }
+
 }
+
+
+
+
 
 
 
