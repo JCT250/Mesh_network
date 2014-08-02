@@ -16,3 +16,6 @@ C:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication
 C:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Mesh_Controller.Properties.Resources.resources
 C:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Mesh_Controller.csproj.GenerateResource.Cache
 C:\Users\prepress2\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Mesh_Controller.csprojResolveAssemblyReference.cache
+F:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Mesh Controller.exe.config
+F:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Mesh Controller.exe
+F:\Users\James\Documents\GitHub\Mesh_network\Pc Software\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Mesh Controller.pdb
