@@ -80,6 +80,8 @@ namespace WindowsFormsApplication1
             textBox35.Text = ("0.00v");
             textBox36.Text = ("0.00°c");
 
+            add_arcade_sound.Text = Mesh_Controller.Properties.Settings.Default.add_arcade_sound;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -2129,6 +2131,16 @@ namespace WindowsFormsApplication1
         {
             btn_scan_Click(null, null);
             timer2.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_setting_save_Click(object sender, EventArgs e)
+        {
+           Mesh_Controller.Properties.Settings.Default.Save();
         }
 
 
